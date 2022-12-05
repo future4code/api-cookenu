@@ -8,8 +8,9 @@ Back-end para projetos do front.
 
 Atualmente está deployado no render.
 
-## Ambiente
+## Environment
 
+```
 PORT = 3003
 DB_HOST = 
 DB_USER = 
@@ -20,3 +21,4 @@ JWT_KEY =
 JWT_EXPIRES_IN = "24h"
 
 BCRYPT_SALT_ROUNDS = 12
+```
