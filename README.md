@@ -1,6 +1,6 @@
 # API Cookenu
 
-Back-end para projetos do front.
+Back-end para projetos do front. Utiliza express e mysql.
 
 ## Documentação
 
