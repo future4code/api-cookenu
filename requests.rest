@@ -1,0 +1,26 @@
+### Signup
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "alice",
+    "email": "alice@gmail.com",
+    "password": "alice99"
+}
+
+### Login
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "astrodev@gmail.com",
+    "password": "bananinha"
+}
+
+### Get all recipes
+GET http://localhost:3003/recipes
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsImlhdCI6MTY2OTkyNDI3OCwiZXhwIjoxNjcwMDEwNjc4fQ.5DHK2bWgIkUZfRYcoSENEyE120RRrKI2zGL7NNKM5B0
+
+### Get recipe details
+GET http://localhost:3003/recipes/details/202
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMSIsImlhdCI6MTY2OTkyNDI3OCwiZXhwIjoxNjcwMDEwNjc4fQ.5DHK2bWgIkUZfRYcoSENEyE120RRrKI2zGL7NNKM5B0
