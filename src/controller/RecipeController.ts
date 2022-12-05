@@ -85,7 +85,7 @@ export class RecipeController {
                 return res.status(error.statusCode).send({ message: error.message })
             }
 
-            res.status(500).send({ message: "Erro inesperado ao buscar detalhes de uma receita" })
+            res.status(500).send({ message: "Erro inesperado ao deletar uma receita" })
         }
     }
 }
