@@ -8,9 +8,12 @@ Back-end para projetos do front. Utiliza express e mysql.
 
 Atualmente está deployado no render.
 
-## Scripts
+## Scripts para iniciar
 - npm install && npm run build
 - node build/index.js
+
+## Migration MySQL
+- npm run migrations
 
 ## Environment
 
