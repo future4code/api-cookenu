@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { RecipeBusiness } from "../business/RecipeBusiness";
 import { BaseError } from "../errors/BaseError";
-import { ICreateRecipeInputDTO, IGetAllRecipesInputDTO, IGetRecipeDetailsInputDTO } from "../models/Recipe";
+import { ICreateRecipeInputDTO, IDeleteRecipeByIdInputDTO, IGetAllRecipesInputDTO, IGetRecipeDetailsInputDTO } from "../models/Recipe";
 
 export class RecipeController {
     constructor(
@@ -66,6 +66,26 @@ export class RecipeController {
             }
 
             res.status(500).send({ message: "Erro inesperado ao criar receita" })
+        }
+    }
+
+    public deleteRecipeById = async (req: Request, res: Response) => {
+        try {
+            const input: IDeleteRecipeByIdInputDTO = {
+                token: req.headers.authorization,
+                recipeId: req.params.recipeId
+            }
+
+            const response = await this.recipeBusiness.deleteRecipeById(input)
+
+            res.status(200).send(response)
+        } catch (error: unknown) {
+            console.log(error)
+            if (error instanceof BaseError) {
+                return res.status(error.statusCode).send({ message: error.message })
+            }
+
+            res.status(500).send({ message: "Erro inesperado ao buscar detalhes de uma receita" })
         }
     }
 }

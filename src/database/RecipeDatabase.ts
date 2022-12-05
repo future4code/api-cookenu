@@ -5,7 +5,7 @@ import { UserDatabase } from "./UserDatabase"
 export class RecipeDatabase extends BaseDatabase {
     public static TABLE_RECIPES = "Cookenu_Recipes"
 
-    public getAllRecipes = async () => {
+    public getAllRecipes = async (): Promise<IRecipeDB[]> => {
         const recipesDB: IRecipeDB[] = await BaseDatabase
             .connection(RecipeDatabase.TABLE_RECIPES)
             .select()
@@ -13,7 +13,7 @@ export class RecipeDatabase extends BaseDatabase {
         return recipesDB
     }
 
-    public getRecipeDetails = async (recipeId: string) => {
+    public getRecipeDetails = async (recipeId: string): Promise<IGetRecipeDetailsOutputDTO> => {
         const recipesDB: any = await BaseDatabase
             .connection(RecipeDatabase.TABLE_RECIPES)
             .select(
@@ -33,7 +33,7 @@ export class RecipeDatabase extends BaseDatabase {
         return recipesDB as IGetRecipeDetailsOutputDTO
     }
 
-    public createRecipe = async (recipe: Recipe) => {
+    public createRecipe = async (recipe: Recipe): Promise<void> => {
         const recipeDB: IRecipeDB = {
             id: recipe.getId(),
             title: recipe.getTitle(),
@@ -46,5 +46,25 @@ export class RecipeDatabase extends BaseDatabase {
         await BaseDatabase
             .connection(RecipeDatabase.TABLE_RECIPES)
             .insert(recipeDB)
+    }
+
+    public getRecipeById = async (recipeId: string): Promise<IRecipeDB | undefined> => {
+        const recipesDB: IRecipeDB[] = await BaseDatabase
+            .connection(RecipeDatabase.TABLE_RECIPES)
+            .select()
+            .where({
+                id: recipeId
+            })
+
+        return recipesDB[0] 
+    }
+
+    public deleteRecipeById = async (recipeId: string): Promise<void> => {
+        await BaseDatabase
+            .connection(RecipeDatabase.TABLE_RECIPES)
+            .delete()
+            .where({
+                id: recipeId
+            })
     }
 }

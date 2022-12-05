@@ -16,5 +16,6 @@ const recipeController = new RecipeController(
 )
 
 recipeRouter.get("/all", recipeController.getAllRecipes)
-recipeRouter.get("/details/:recipeId", recipeController.getRecipeDetails)
-recipeRouter.post("/create", recipeController.createRecipe)
+recipeRouter.get("/:recipeId", recipeController.getRecipeDetails)
+recipeRouter.post("/", recipeController.createRecipe)
+recipeRouter.delete("/:recipeId", recipeController.deleteRecipeById)

@@ -110,3 +110,12 @@ export interface ICreateRecipeInputDTO {
 export interface ICreateRecipeOutputDTO {
     message: string
 }
+
+export interface IDeleteRecipeByIdInputDTO {
+    token: string,
+    recipeId: string
+}
+
+export interface IDeleteRecipeByIdOutputDTO {
+    message: string
+}
