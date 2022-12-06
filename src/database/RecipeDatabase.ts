@@ -30,7 +30,7 @@ export class RecipeDatabase extends BaseDatabase {
                 [`${RecipeDatabase.TABLE_RECIPES}.id`]: recipeId
             })
 
-        return recipesDB as IGetRecipeDetailsOutputDTO
+        return recipesDB[0] as IGetRecipeDetailsOutputDTO
     }
 
     public createRecipe = async (recipe: Recipe): Promise<void> => {
