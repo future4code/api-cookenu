@@ -136,9 +136,9 @@ export class RecipeBusiness {
             throw new NotFoundError()
         }
 
-        // if (payload.id !== recipeDB.creatorId) {
-        //     throw new ForbiddenError("Permissão insuficiente. Somente a conta que criou a receita pode deletá-la.")
-        // }
+        if (payload.id !== recipeDB.creatorId) {
+            throw new ForbiddenError("Permissão insuficiente. Somente a conta que criou a receita pode deletá-la.")
+        }
 
         await this.recipeDatabase.deleteRecipeById(recipeId)
 
